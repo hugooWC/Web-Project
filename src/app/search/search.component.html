@@ -1,0 +1,129 @@
+<nav class="navbar navbar-light bg-white">
+  <img src="./assets/image/logo.png" style="width: 30%;"> 
+</nav>
+
+<div class="ui raised segment">
+    <div class="block container" style="width: 30%; margin-top: 15px;">
+      <article class="panel is-primary">
+        <p class="panel-heading">Basketball Facility</p>
+        <div class="container">
+          <form [formGroup]="searchForm" (ngSubmit)="onSubmit(searchForm.value)" class="ui form" >
+            <table>
+
+              <div>
+                <tr>
+                  <label class="label"><p>Search By:</p></label>
+                </tr>
+      
+                <tr>
+                  <td style="width: 500px;">
+                    <div style="margin-top: 5px;">
+                      <select class="select is-rounded" formControlName="searchType">
+                        <option disabled>Select a item</option>
+                        <option value="District">District</option>
+                        <option value="Name">Name</option>
+                        <option value="Address">Address</option>
+                        <option value="Openhrs">Opening hours</option>
+                      </select>
+                    </div>      
+                  </td>
+
+                  <td>
+                    <div style="margin-top: 5px; margin-left: 1px;">
+                      <button type="submit" class="button is-primary is-light" (click)="createButtonHandler()" data-bs-toggle="modal"
+                      data-bs-target="#createModal">
+                      <i class="add icon"></i>
+                      </button>
+                    </div> 
+                  </td>
+                </tr>
+                    
+                <tr>
+                  <td>
+                    <div style="margin-top: 5px;">
+                      <input class="input is-primary" type="text" id="searchType" formControlName="searchKey" placeholder="Enter the Keywords">
+                    </div> 
+                  </td>
+                </tr>
+                
+                <tr>
+                  <div class="block" style="margin-top:5px; margin-bottom: 10px;">
+                    <button type="submit" class="button is-dark">Search &nbsp; <i class="search icon"></i></button>
+                    
+                  </div>           
+                </tr>
+
+              </div>  
+            </table>
+          </form>
+        </div> 
+      </article>
+    </div>
+    
+    
+
+    <div class="block">
+      <ng-container *ngFor="let search of serverDataArr">
+        <tr *ngIf=" search.status === 'Error'">
+          <div class="notification is-danger">
+            <div>Type: {{search.status}}</div>
+            <div>Error Code: {{search.errcode}}</div>
+            <div>Error Message: {{search.errmsg}}</div>
+          </div>
+        </tr>
+      </ng-container>
+    </div>
+
+    
+  
+    <div class="box">
+      <table class="table block">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>District</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Court</th>
+            <th>Ancillary facilities</th>
+            <th>Opening hours</th>
+            <th>Phone</th>
+            <th>Details</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let search of serverDataArr">
+            <td>{{search.bkId}}</td>
+            <td>{{search.District_en}}</td>
+            <td>{{search.Name_en}}</td>
+            <td>{{search.Address_en}}</td>
+            <td>{{search.Court_no_en}}</td>
+            <td>{{search.Ancillary_facilities_en}}</td>
+            <td>{{search.Opening_hours_en}}</td>
+            <td>{{search.Phone}}</td>
+            <td>
+              <button class="button is-white" (click)="updateButtonHandler(search.bkId)" data-bs-toggle="modal"
+              data-bs-target="#updateModal">
+                <i class="list alternate outline icon"></i>
+              </button>
+            </td>
+            <td>
+              <button class="button is-white" (click)="deleteButtonHandler(search.bkId)" data-bs-toggle="modal"
+              data-bs-target="#deleteModal">
+                <i class="large trash outline icon" ></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>  
+      </table>
+    </div>
+</div>
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      Copyright © 2022 Leisure and Cultural Services Department All Rights Reserved.
+    </p>
+  </div>
+</footer>

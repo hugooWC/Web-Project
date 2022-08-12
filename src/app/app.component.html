@@ -1,0 +1,5 @@
+  <app-search (updateEvent)="updateEventReceiver($event)" (deleteEvent)="deleteEventReceiver($event)" (createEvent)="createEventReceiver()"></app-search>
+  <app-create *ngIf="createEventTriggered" (cancelCreateEvent)="cancelCreateEventReceiver()"></app-create>
+  <app-update *ngIf="updateEventTriggered" (cancelUpdateEvent)="cancelUpdateEventReceiver()" [basketRecord]="this.basketRecord"></app-update>
+  <app-delete *ngIf="deleteEventTriggered" (cancelDeleteEvent)="cancelDeleteEventReceiver()" [basketRecord]="this.basketRecord"></app-delete>
+  

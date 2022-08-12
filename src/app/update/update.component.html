@@ -1,0 +1,129 @@
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="title">Update Record</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+          <form [formGroup]="updateForm" (ngSubmit)="onSubmit(updateForm.value)">
+              <div class="container">
+                <label class="label">ID:</label>
+                <div class="control" style="margin-bottom:10px">
+                  <input type="text" class="input" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm" formControlName="bkId" id="bkId" readonly>
+                </div>
+                
+                <label class="label">District</label>
+                <select formControlName="District_en" id="District_en" class="select" style="width: 100%;">
+                    <option selected disabled>Please Select the District</option>
+                    <option value="Kowloon City">Kowloon City</option>
+                    <option value="Tai Po">Tai Po</option>
+                    <option value="Central & Western">Central & Western</option>
+                    <option value="Yuen Long">Yuen Long</option>
+                    <option value="Tuen Mun">Tuen Mun</option>
+                    <option value="North">North</option>
+                    <option value="Sai Kung">Sai Kung</option>
+                    <option value="Sha Tin">Sha Tin</option>
+                    <option value="Eastern">Eastern</option>
+                    <option value="Wan Chai">Wan Chai</option>
+                    <option value="Yau Tsim Mong">Yan Tsim Mong</option>
+                    <option value="Southern">Southern</option>
+                    <option value="Tsuen Wan">Tsuen Wan</option>
+                    <option value="Sham Shui Po">Sham Shui Po</option>
+                    <option value="Wong Tai Sin">Wong Tai Sin</option>
+                    <option value="Kwai Tsing">Kwai Tsing</option>
+                    <option value="Islands">Islands</option>
+                    <option value="Kwun Tong">Kwun Tong</option>
+                </select>
+
+                  
+                  <label class="label">Name</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Name_en" id="Name_en">
+                  </div>
+                  
+                  <label class="label">Address</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Address_en" id="Address_en">
+                  </div>
+                 
+                  <label class="label">GIHS</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="GIHS" id="GIHS">
+                  </div>
+                                 
+                  <label class="label">Court</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Court_no_en" id="Court_no_en">
+                  </div>
+                  
+                   
+                  <label class="label">Ancillary facilities</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Ancillary_facilities_en" id="Ancillary_facilities_en">
+                  </div>
+                  
+                  
+                  <label class="label">Opening hours</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Opening_hours_en" id="Opening_hours_en">
+                  </div>
+                  
+                    
+                  <label class="label">Phone</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Phone" id="Phone">
+                  </div>
+                 
+                   
+                  <label class="label">Remarks</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Remarks_en" id="Remarks_en">
+                  </div>
+                  
+                    
+                  <label class="label">Longitude</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Longitude" id="Longitude">
+                  </div>
+                  
+                 
+                  <label class="label">Latitude</label>
+                  <div class="control" style="margin-bottom:10px">
+                    <input type="text" class="input" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm" formControlName="Latitude" id="Latitude">
+                  </div>
+       
+            </div>
+              <div class="modal-footer">
+                <button id="closeButton" type="button" class="button is-dark" (click)="cancelButtonHandler()" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="button is-warning">Update</button>
+              </div>
+            </form>
+            <div>
+              <ng-container *ngFor="let search of serverDataArr">   
+                <tr *ngIf="search.status === 'success'">
+                  <div class="notification is-success">
+                    <div>Message: {{search.msg}}</div>
+                  </div>
+                </tr>
+              </ng-container>
+            </div>
+           
+      </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
